@@ -7,7 +7,8 @@ red="\e[0;31m"
 reset="\e[0m"
 
 # File to write
-file=results/results-$(date +%s).log
+directory=results
+file=${directory}/results-$(date +%s).log
 
 # Sequence config
 # read start
@@ -23,6 +24,9 @@ ${purple}888888 88 8888P 8888P 8888Yb 88   88 8888P 8888P
 
 Start: $1 | Stop: $2
 "
+
+
+[[ -d "$directory" ]] || mkdir "$directory"
 
 while [ $start -le $stop ]
 do
