@@ -7,7 +7,7 @@ echo "Stop num"
 # read stop
 stop=$2
 
-file=results/results.log
+file=results/results-$(date +%s).log
 
 while [ $start -le $stop ]
 do
