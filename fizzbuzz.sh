@@ -34,6 +34,8 @@ ${purple}888888 88 8888P 8888P 8888Yb 88   88 8888P 8888P
 Start: $start | Stop: $stop
 "
 
+echo "$MONGO_SERVER"
+
 # =======================
 #        SCRIPT
 # =======================
@@ -49,22 +51,38 @@ do
     then
         echo -e "${purple}fizz buzz${reset}"
         echo "fizz buzz" >> $file
+        mongosh ${MONGO_SERVER} -u ${MONGO_USERNAME} -p ${MONGO_PASSWORD} <<EOF
+            use fizzbuzz
+            db.results.insertOne( { num: $start, value: "fizz buzz" } )
+EOF
 
     # Check if divide by 5   
     elif [[ 0 -eq "($start%5)" ]]
     then
         echo -e "${red}buzz${reset}"
         echo "buzz" >> $file
+        mongosh ${MONGO_SERVER} -u ${MONGO_USERNAME} -p ${MONGO_PASSWORD} <<EOF
+            use fizzbuzz
+            db.results.insertOne( { num: $start, value: "buzz" } )
+EOF
 
     # Check if divide by 3
     elif [[ 0 -eq "($start%3)" ]]
     then
         echo -e "${blue}fizz${reset}"
         echo "fizz" >> $file
+        mongosh ${MONGO_SERVER} -u ${MONGO_USERNAME} -p ${MONGO_PASSWORD} <<EOF
+            use fizzbuzz
+            db.results.insertOne( { num: $start, value: "fizz" } )
+EOF
 
     else
         echo "$start"
         echo "$start" >> $file
+        mongosh ${MONGO_SERVER} -u ${MONGO_USERNAME} -p ${MONGO_PASSWORD} <<EOF
+            use fizzbuzz
+            db.results.insertOne( { num: $start } )
+EOF
 
     fi	
     start=$(( $start + 1 ))

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # mongoDB
+  mongo:
+    container_name: mongo
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONG_INITDB_DATABASE=fizzbuzz
+    volumes:
+      - ./vc/fizzbuzz/mongodb:/data/db
+    expose:
+      - 27017
+    networks:
+      - fizzbuzz
+  
+  # FizzBuzz
+  fizzbuzz:
+    image: fizzbuzz
+    container_name: fizzbuzz
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_SERVER=mongodb://mongo:27017
+      - MONGO_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_PASSWORD=${MONGO_ROOT_PASSWORD}
+    networks:
+      - fizzbuzz
+    volumes:
+      - .:/usr/local/workdir
+    command: ./fizzbuzz.sh 0 20
+
+networks:
+  fizzbuzz:
+    driver: bridge
