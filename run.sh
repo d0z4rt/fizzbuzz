@@ -1,1 +1,1 @@
-./build.sh && ./start.sh
+./build.sh && ./start.sh $1 $2

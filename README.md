@@ -7,6 +7,8 @@
 
 Fizzbuzz script writen in bash and dockerized.
 
-use `run.sh` to build and run the container
+> `<start> <stop>` represent the sequence (start number and stop number)
 
-you can edit the sequence in `start.sh`
+use `run.sh <start> <stop>` to build and run the container
+
+or build the image with `build.sh` and run it using `start.sh <start> <stop>`
