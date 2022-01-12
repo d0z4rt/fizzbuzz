@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# =======================
+#        CONFIG
+# =======================
+
 # Color code variables
 purple="\e[1;35m"
 blue="\e[0;34m"
@@ -17,6 +21,10 @@ if [ -z ${1+x} ]; then start=0; else start=$1; fi
 # read stop
 if [ -z ${2+x} ]; then stop=10; else stop=$2; fi
 
+# =======================
+#        HEADER
+# =======================
+
 echo -e "
 ${purple}888888 88 8888P 8888P 8888Yb 88   88 8888P 8888P 
 88__   88   dP    dP  88__dP 88   88   dP    dP  
@@ -26,9 +34,14 @@ ${purple}888888 88 8888P 8888P 8888Yb 88   88 8888P 8888P
 Start: $start | Stop: $stop
 "
 
+# =======================
+#        SCRIPT
+# =======================
 
+# Check if the directory to write exists
 [[ -d "$directory" ]] || mkdir "$directory"
 
+# FizzBuzz loop
 while [ $start -le $stop ]
 do
     # Check if divide by 3 & 5
