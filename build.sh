@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t fizzbuzz .
+DOCKER_BUILDKIT=0 docker build -t fizzbuzz .
