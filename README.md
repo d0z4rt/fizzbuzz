@@ -5,7 +5,7 @@
 88     88 d8888 d8888 88oodP 'YbodP' d8888 d8888
 ```
 
-Fizzbuzz script writen in bash and dockerized.
+Fizzbuzz script written in bash and dockerized.
 
 > `<start> <stop>` represent the sequence (start number and stop number)
 
