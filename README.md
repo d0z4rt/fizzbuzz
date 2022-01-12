@@ -12,3 +12,5 @@ Fizzbuzz script written in bash and dockerized.
 use `run.sh <start> <stop>` to build and run the container
 
 or build the image with `build.sh` and run it using `start.sh <start> <stop>`
+
+TODO: documentation for docker-compose
