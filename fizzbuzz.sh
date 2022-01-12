@@ -11,10 +11,11 @@ directory=results
 file=${directory}/results-$(date +%s).log
 
 # Sequence config
+# check if a variable is set: https://stackoverflow.com/a/13864829
 # read start
-start=$1
+if [ -z ${1+x} ]; then start=0; else start=$1; fi
 # read stop
-stop=$2
+if [ -z ${2+x} ]; then stop=10; else stop=$2; fi
 
 echo -e "
 ${purple}888888 88 8888P 8888P 8888Yb 88   88 8888P 8888P 
@@ -22,7 +23,7 @@ ${purple}888888 88 8888P 8888P 8888Yb 88   88 8888P 8888P
 88''   88  dP    dP   88''Yb Y8   8P  dP    dP   
 88     88 d8888 d8888 88oodP 'YbodP' d8888 d8888${reset}
 
-Start: $1 | Stop: $2
+Start: $start | Stop: $stop
 "
 
 
